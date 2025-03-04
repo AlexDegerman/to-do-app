@@ -1,6 +1,6 @@
 import ToDoItem from "./ToDoItem"
 
-const ToDoList = ({ tasks }) => {
+const ToDoList = ({ tasks, toggleComplete }) => {
 
   return (
     <div>
@@ -8,6 +8,7 @@ const ToDoList = ({ tasks }) => {
         <ToDoItem
           key={task.id}
           task={task}
+          toggleComplete={toggleComplete}
         />
       )}
     </div>

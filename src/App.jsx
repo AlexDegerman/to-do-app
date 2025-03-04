@@ -13,11 +13,18 @@ const App = () => {
     setTasks([...tasks, {id: Date.now(), text, completed: false}])
   }
 
+  const toggleComplete = (taskId) => {
+    setTasks(
+      tasks.map((task) =>
+      task.id === taskId ? { ...task, completed: !task.completed} : task)
+    )
+  }
+
   return (
     <div>
     <h1>To-do App</h1>
     <ToDoForm addTask={addTask}/>
-    <ToDoList tasks={tasks}/>
+    <ToDoList tasks={tasks} toggleComplete={toggleComplete}/>
     </div>
   )
 }

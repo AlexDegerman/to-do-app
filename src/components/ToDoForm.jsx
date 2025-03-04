@@ -8,7 +8,6 @@ const ToDoForm = ({ addTask }) => {
     if (!text.trim()) return
     addTask(text)
     setText("")
-
   }
 
   return (

@@ -1,9 +1,14 @@
 
-const ToDoItem = ({ task }) => {
+const ToDoItem = ({ task, toggleComplete }) => {
 
   return (
     <div>
-      <p> {task.text} </p>
+      <input 
+        type="checkbox"
+        checked={task.completed}
+        onChange={() => toggleComplete(task.id)}
+      />
+      <span> {task.text} </span>
     </div>
   )
 }
