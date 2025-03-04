@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import ToDoList from './components/ToDoList'
 import ToDoForm from './components/ToDoForm'
@@ -20,11 +20,15 @@ const App = () => {
     )
   }
 
+  const deleteTask = (taskId) => {
+    setTasks(tasks.filter((task) => task.id !== taskId))
+  }
+
   return (
     <div>
     <h1>To-do App</h1>
     <ToDoForm addTask={addTask}/>
-    <ToDoList tasks={tasks} toggleComplete={toggleComplete}/>
+    <ToDoList tasks={tasks} toggleComplete={toggleComplete} deleteTask={deleteTask}/>
     </div>
   )
 }
