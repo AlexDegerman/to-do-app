@@ -1,4 +1,5 @@
 import { Trash2Icon } from "lucide-react"
+import '../styles/ToDoItem.css'
 
 const ToDoItem = ({ task, toggleComplete, deleteTask }) => {
 
@@ -12,17 +13,21 @@ const ToDoItem = ({ task, toggleComplete, deleteTask }) => {
   }
 
   return (
-    <div>
+    <div className={`task-item ${task.completed ? "task-completed" : ""}`}>
       <input 
         type="checkbox"
         checked={task.completed}
         onChange={() => toggleComplete(task.id)}
       />
-      <span> {task.text} </span>
-      <span> {formatDate(task.id)} </span>
-      <button onClick={() => deleteTask(task.id)}><Trash2Icon/></button>
+      <div className="task-text">
+        <span>{task.text}</span>
+        <span className="task-date">{formatDate(task.id)}</span>
+      </div>
+      <button className="task-delete" onClick={() => deleteTask(task.id)}><Trash2Icon size={16}/></button>
     </div>
   )
+  
+  
 }
 
 export default ToDoItem

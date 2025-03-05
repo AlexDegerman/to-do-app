@@ -54,13 +54,19 @@ const App = () => {
   }
 
   return (
-    <div>
-    <h1>To-do App</h1>
-    <ToDoForm addTask={addTask}/>
-    <SortDropDown sortOrder={sortOrder} sortChange={handleSortChange} filterStatus={filterStatus} filterChange={(e) => setFilterStatus(e.target.value)}/>
-    <ToDoList tasks={filteredTasks} toggleComplete={toggleComplete} deleteTask={deleteTask}/>
+    <div className="app-container">
+      <h1>To-do App</h1>
+      <ToDoForm addTask={addTask}/>
+      <SortDropDown 
+        sortOrder={sortOrder} 
+        sortChange={handleSortChange} 
+        filterStatus={filterStatus} 
+        filterChange={(e) => setFilterStatus(e.target.value)}
+      />
+      <ToDoList tasks={filteredTasks} toggleComplete={toggleComplete} deleteTask={deleteTask}/>
     </div>
   )
+  
 }
 
 export default App

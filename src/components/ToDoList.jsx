@@ -1,9 +1,10 @@
 import ToDoItem from "./ToDoItem"
+import '../styles/ToDoList.css'
 
 const ToDoList = ({ tasks, toggleComplete, deleteTask }) => {
 
   return (
-    <div>
+    <div className="task-list">
       {tasks.map(task =>
         <ToDoItem
           key={task.id}
@@ -14,6 +15,7 @@ const ToDoList = ({ tasks, toggleComplete, deleteTask }) => {
       )}
     </div>
   )
+  
 }
 
 export default ToDoList
