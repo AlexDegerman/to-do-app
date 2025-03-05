@@ -13,6 +13,7 @@ const App = () => {
 
   const [tasks, setTasks] = useState(loadTasks)
   const [sortOrder, setSortOrder] = useState("newest")
+  const [filterStatus, setFilterStatus] = useState("all")
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks))
@@ -42,6 +43,12 @@ const App = () => {
     return 0
   })
 
+  const filteredTasks = sortedTasks.filter((task) => {
+    if (filterStatus === "completed") return task.completed
+    if (filterStatus === "uncompleted") return !task.completed
+    return true
+  })
+
   const handleSortChange = (e) => {
     setSortOrder(e.target.value)
   }
@@ -50,8 +57,8 @@ const App = () => {
     <div>
     <h1>To-do App</h1>
     <ToDoForm addTask={addTask}/>
-    <SortDropDown sortOrder={sortOrder} sortChange={handleSortChange}/>
-    <ToDoList tasks={sortedTasks} toggleComplete={toggleComplete} deleteTask={deleteTask}/>
+    <SortDropDown sortOrder={sortOrder} sortChange={handleSortChange} filterStatus={filterStatus} filterChange={(e) => setFilterStatus(e.target.value)}/>
+    <ToDoList tasks={filteredTasks} toggleComplete={toggleComplete} deleteTask={deleteTask}/>
     </div>
   )
 }
