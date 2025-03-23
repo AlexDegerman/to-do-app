@@ -4,6 +4,7 @@ const SortDropDown = ({ sortOrder, sortChange, filterStatus, filterChange }) => 
 
   return (
     <div className="sort-filter-container">
+      {/* Sort by selector */}
       <div>
         <label htmlFor="sortOrder">Sort by:</label>
         <select 
@@ -15,7 +16,7 @@ const SortDropDown = ({ sortOrder, sortChange, filterStatus, filterChange }) => 
           <option value="oldest">Oldest</option>
         </select>
       </div>
-  
+        {/* Filter selector */}
       <div>
         <label htmlFor="filterStatus">Show:</label>
         <select
